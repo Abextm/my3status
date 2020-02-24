@@ -11,10 +11,8 @@ func main() {
 
 	Config{
 		Widgets: []Widget{
-			&Temperature{
-				Path:    "/sys/class/drm/card0/device/hwmon/hwmon*/temp1_input",
-				Divisor: 1000,
-				Format:  "%.f°G",
+			&NvidiaTemperature{
+				Format: "%s°G",
 			},
 			&CPU{
 				Colors:        HTOPAdvancedCPUColors(),
