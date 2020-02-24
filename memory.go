@@ -47,7 +47,7 @@ func readMemInfoLine(meminfo []byte, name string) (uint64, error) {
 	if end != -1 {
 		line = line[:end]
 	}
-	start := bytes.IndexAny(line, "012345679")
+	start := bytes.IndexAny(line, "0123456789")
 	if start == -1 {
 		return 0, fmt.Errorf("Memory: no numbers in %q block", name)
 	}
