@@ -11,6 +11,10 @@ func main() {
 
 	Config{
 		Widgets: []Widget{
+			&APCUPSDStatus{
+				Host:     "10.0.0.2:3551",
+				Interval: time.Second * 3,
+			},
 			&NvidiaTemperature{
 				Format: "%s°G",
 			},
@@ -22,7 +26,7 @@ func main() {
 				Width:         24,
 			},
 			&Temperature{
-				Path:    "/sys/devices/platform/it87.552/hwmon/hwmon*/temp1_input",
+				Path:    "/sys/class/hwmon/hwmon0/temp1_input",
 				Divisor: 1000,
 			},
 			&Memory{},
@@ -34,6 +38,10 @@ func main() {
 					&Time{
 						Format:       `Mon 15:04 MST`,
 						LocationName: "UTC",
+					},
+					&Time{
+						Format:       `Mon 15:04 MST`,
+						LocationName: "Asia/Tokyo",
 					},
 				},
 				Func: func(s *StatusBlock) {
